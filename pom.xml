@@ -2,17 +2,31 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>io.github.myui</groupId>
 	<artifactId>matrix4j</artifactId>
+	<version>0.9.0</version>
 	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
+
 	<name>matrix4j</name>
-	<url>http://maven.apache.org</url>
+	<description>The matrix and vector library for Java</description>
+	<url>https://github.com/myui/matrix4j</url>
+	<organization>
+		<name>Makoto Yui</name>
+		<url>https://github.com/myui/matrix4j/</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
 	<properties>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
-		<guava.version>11.0.2</guava.version>
 		<junit.version>4.12</junit.version>
 	</properties>
 
@@ -39,24 +53,12 @@
 
 		<!-- compile scope -->
 		<dependency>
-			<groupId>com.github.haifengl</groupId>
-			<artifactId>smile-math</artifactId>
-			<version>1.0.4</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-math3</artifactId>
-			<version>3.6.1</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
 			<groupId>it.unimi.dsi</groupId>
 			<artifactId>fastutil</artifactId>
 			<version>[7.2.1,7.3)</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- test scope -->
 		<dependency>
 			<groupId>junit</groupId>
