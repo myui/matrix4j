@@ -21,13 +21,10 @@ package matrix4j.utils.lang;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import org.apache.commons.math3.distribution.GammaDistribution;
 
 public final class ArrayUtils {
 
@@ -145,49 +142,6 @@ public final class ArrayUtils {
         return Arrays.asList(v);
     }
 
-    @Nonnull
-    public static <T> T[] shuffle(@Nonnull final T[] array) {
-        shuffle(array, array.length);
-        return array;
-    }
-
-    @Nonnull
-    public static <T> T[] shuffle(@Nonnull final T[] array, final Random rnd) {
-        shuffle(array, array.length, rnd);
-        return array;
-    }
-
-    @Nonnull
-    public static <T> T[] shuffle(@Nonnull final T[] array, final int size) {
-        Random rnd = new Random();
-        shuffle(array, size, rnd);
-        return array;
-    }
-
-    /**
-     * Fisher–Yates shuffle
-     * 
-     * @link http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
-     */
-    @Nonnull
-    public static <T> T[] shuffle(@Nonnull final T[] array, final int size,
-            @Nonnull final Random rnd) {
-        for (int i = size; i > 1; i--) {
-            int randomPosition = rnd.nextInt(i);
-            swap(array, i - 1, randomPosition);
-        }
-        return array;
-    }
-
-    @Nonnull
-    public static int[] shuffle(@Nonnull final int[] array, @Nonnull final Random rnd) {
-        for (int i = array.length; i > 1; i--) {
-            int randomPosition = rnd.nextInt(i);
-            swap(array, i - 1, randomPosition);
-        }
-        return array;
-    }
-
     public static void swap(@Nonnull final Object[] arr, final int i, final int j) {
         Object tmp = arr[i];
         arr[i] = arr[j];
@@ -238,12 +192,6 @@ public final class ArrayUtils {
         Object[] subarray = (Object[]) Array.newInstance(type, newSize);
         System.arraycopy(array, startIndexInclusive, subarray, 0, newSize);
         return subarray;
-    }
-
-    public static void fill(@Nonnull final float[] a, @Nonnull final Random rand) {
-        for (int i = 0, len = a.length; i < len; i++) {
-            a[i] = rand.nextFloat();
-        }
     }
 
     public static int indexOf(@Nullable final int[] array, final int valueToFind,
@@ -847,16 +795,6 @@ public final class ArrayUtils {
         final float[] a = new float[size];
         Arrays.fill(a, filledValue);
         return a;
-    }
-
-    @Nonnull
-    public static float[] newRandomFloatArray(@Nonnegative final int size,
-            @Nonnull final GammaDistribution gd) {
-        final float[] ret = new float[size];
-        for (int i = 0; i < size; i++) {
-            ret[i] = (float) gd.sample();
-        }
-        return ret;
     }
 
 }

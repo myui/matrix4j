@@ -18,8 +18,6 @@
  */
 package matrix4j.utils.lang;
 
-import java.util.Random;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -65,18 +63,6 @@ public class ArrayUtilsTest {
         final int[] original = new int[] {3, 7, 10};
         Assert.assertArrayEquals(new int[] {3, 7, 10, 11},
             ArrayUtils.insert(original, original.length + 1, 11));
-    }
-
-    @Test
-    public void testShuffle() {
-        String[] shuffled = new String[] {"1, 2, 3", "4, 5, 6", "7, 8, 9", "10, 11, 12"};
-        String[] outcome = new String[] {"10, 11, 12", "1, 2, 3", "4, 5, 6", "7, 8, 9"};
-
-        ArrayUtils.shuffle(shuffled, new Random(0L));
-
-        for (int i = 0; i < shuffled.length; i++) {
-            Assert.assertEquals(outcome[i], shuffled[i]);
-        }
     }
 
 }
