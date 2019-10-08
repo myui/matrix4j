@@ -13,14 +13,14 @@ Matrix4j has minimum dependencies to
 # What matrix4j provides
 
 - Matrix
- - Sparse Matrix
-  - CSR Matrix
-  - CSC Matrix
-  - DoK Matrix
- - Dense Matrix
-  - Column-major Dense Matrix
-  - Row-major Dense Matrix
- - double/float/int matrix
+    - Sparse Matrix
+        - CSR Matrix
+        - CSC Matrix
+        - DoK Matrix
+    - Dense Matrix
+        - Column-major Dense Matrix
+         - Row-major Dense Matrix
+    - double/float/int matrix
 - Dense/Sparse Vector
 - Vector processing APIs
 
