@@ -30,7 +30,6 @@ public final class DoubleArrayList implements Serializable {
     public static final int DEFAULT_CAPACITY = 12;
 
     /** array entity */
-    @Nonnull
     private double[] data;
     private int used;
 

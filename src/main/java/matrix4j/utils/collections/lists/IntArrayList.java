@@ -32,7 +32,6 @@ public final class IntArrayList implements Serializable {
     public static final int DEFAULT_CAPACITY = 12;
 
     /** array entity */
-    @Nonnull
     private int[] data;
     private int used;
 

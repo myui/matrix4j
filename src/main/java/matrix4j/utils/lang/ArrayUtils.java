@@ -242,7 +242,7 @@ public final class ArrayUtils {
         return INDEX_NOT_FOUND;
     }
 
-    public static int insertionPoint(@Nullable final int[] a, final int key) {
+    public static int insertionPoint(@Nonnull final int[] a, final int key) {
         final int pos = Arrays.binarySearch(a, key);
         if (pos < 0) {
             return ~pos;
@@ -251,7 +251,7 @@ public final class ArrayUtils {
         }
     }
 
-    public static int insertionPoint(@Nullable final int[] a, final int size, final int key) {
+    public static int insertionPoint(@Nonnull final int[] a, final int size, final int key) {
         final int pos = Arrays.binarySearch(a, 0, size, key);
         if (pos < 0) {
             return ~pos;
