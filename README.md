@@ -1,6 +1,18 @@
 # Matrix4j
 The matrix and vector library for Java
 
+# How to use
+
+You can use Matrix4j through Maven central repository by adding the following entry to your project pom.xml file.
+
+```
+    <dependency>
+      <groupId>com.github.myui</groupId>
+      <artifactId>matrix4j</artifactId>
+      <version>0.9.0</version>
+    </dependency>
+ ```
+
 # Requirements
 
 Java7 or later is supported.
