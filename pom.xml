@@ -21,11 +21,13 @@
 	<groupId>io.github.myui</groupId>
 	<artifactId>matrix4j</artifactId>
 	<version>0.9.0</version>
+
 	<packaging>jar</packaging>
 
 	<name>matrix4j</name>
 	<description>Matrix and Vector Library for Java</description>
 	<url>https://github.com/myui/matrix4j</url>
+	<inceptionYear>2019</inceptionYear>
 	<organization>
 		<name>Makoto Yui</name>
 		<url>https://github.com/myui/matrix4j/</url>
@@ -39,11 +41,32 @@
 		</license>
 	</licenses>
 
+	<scm>
+		<url>https://github.com/myui/matrix4j</url>
+		<connection>scm:git:git@github.com:myui/matrix4j.git</connection>
+		<developerConnection>scm:git:git@github.com:myui/matrix4j.git</developerConnection>
+	</scm>
+
+	<developers>
+		<developer>
+			<id>myui</id>
+			<name>Makoto YUI</name>
+			<email>myui@apache.org</email>
+			<url>http://myui.github.io/</url>
+		</developer>
+	</developers>
+
 	<properties>
 		<main.basedir>${project.basedir}</main.basedir>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
+		<build.year>${maven.build.timestamp}</build.year>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<junit.version>4.12</junit.version>
+		<dependency.locations.enabled>false</dependency.locations.enabled>
+		<maven-enforcer.requireMavenVersion>[3.3.1,)</maven-enforcer.requireMavenVersion>
 	</properties>
 
 	<distributionManagement>
@@ -52,6 +75,15 @@
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
+
+	<issueManagement>
+		<url>https://github.com/myui/matrix4j/issues</url>
+		<system>Github Issues</system>
+	</issueManagement>
+	<ciManagement>
+		<system>Travis CI</system>
+		<url>https://travis-ci.org/myui/matrix4j</url>
+	</ciManagement>
 
 	<profiles>
 		<profile>
@@ -168,6 +200,18 @@
 			<plugins>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>${maven.compiler.source}</source>
+						<target>${maven.compiler.target}</target>
+						<debug>true</debug>
+						<debuglevel>lines,vars,source</debuglevel>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>3.0.2</version>
 					<configuration>
@@ -213,8 +257,6 @@
 							<include>src/test/**/*.java</include>
 							<include>bin/*.sh</include>
 							<include>**/pom.xml</include>
-							<include>docs/gitbook/**/*.md</include>
-							<include>src/site/markdown/**/*.md</include>
 						</includes>
 						<useDefaultExcludes>false</useDefaultExcludes>
 						<excludes>
@@ -409,6 +451,11 @@
 			<plugin>
 				<groupId>com.mycila</groupId>
 				<artifactId>license-maven-plugin</artifactId>
+			</plugin>
+			<!-- mvn compile -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
 			<!-- start sonatype deploy -->
 			<!-- mvn clean deploy -DperformRelease=true -Dskiptests=true -Dmaven.test.skip=true -->
