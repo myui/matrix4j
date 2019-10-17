@@ -1,7 +1,7 @@
 # Matrix4j
 [![Build Status](https://travis-ci.org/myui/matrix4j.svg?branch=master)](https://travis-ci.org/myui/matrix4j)
 [![License](http://img.shields.io/:license-Apache_v2-blue.svg)](https://github.com/myui/btree4j/blob/master/LICENSE)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.github.myui/matrix4j/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.github.myui/matrix4j)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.myui/matrix4j/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.myui/matrix4j)
 
 The matrix and vector library for Java
 
@@ -11,7 +11,7 @@ You can use Matrix4j through Maven central repository by adding the following en
 
 ```
     <dependency>
-      <groupId>com.github.myui</groupId>
+      <groupId>io.github.myui</groupId>
       <artifactId>matrix4j</artifactId>
       <version>0.9.0</version>
     </dependency>
