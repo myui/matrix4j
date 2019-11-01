@@ -19,6 +19,10 @@ import matrix4j.matrix.sparse.CSRMatrix;
 import matrix4j.utils.collections.lists.DoubleArrayList;
 import matrix4j.utils.collections.lists.IntArrayList;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 
@@ -27,6 +31,8 @@ import javax.annotation.Nonnull;
  */
 public final class CSRMatrixBuilder extends MatrixBuilder {
 
+    private final boolean sortRequired;
+
     @Nonnull
     private final IntArrayList rowPointers;
     @Nonnull
@@ -34,14 +40,23 @@ public final class CSRMatrixBuilder extends MatrixBuilder {
     @Nonnull
     private final DoubleArrayList values;
 
+    @Nonnull
+    private final List<ColValue> colCache;
+
     private int maxNumColumns;
 
     public CSRMatrixBuilder(@Nonnegative int initSize) {
+        this(initSize, true);
+    }
+
+    public CSRMatrixBuilder(@Nonnegative int initSize, boolean sortRequired) {
         super();
+        this.sortRequired = sortRequired;
         this.rowPointers = new IntArrayList(initSize + 1);
         rowPointers.add(0);
         this.columnIndices = new IntArrayList(initSize);
         this.values = new DoubleArrayList(initSize);
+        this.colCache = new ArrayList<>(32);
         this.maxNumColumns = 0;
     }
 
@@ -49,6 +64,15 @@ public final class CSRMatrixBuilder extends MatrixBuilder {
     public CSRMatrixBuilder nextRow() {
         int ptr = values.size();
         rowPointers.add(ptr);
+
+        if (sortRequired) {
+            Collections.sort(colCache);
+        }
+        for (ColValue e : colCache) {
+            columnIndices.add(e.col);
+            values.add(e.value);
+        }
+        colCache.clear();
         return this;
     }
 
@@ -61,8 +85,7 @@ public final class CSRMatrixBuilder extends MatrixBuilder {
             return this;
         }
 
-        columnIndices.add(col);
-        values.add(value);
+        colCache.add(new ColValue(col, value));
         return this;
     }
 
@@ -71,6 +94,22 @@ public final class CSRMatrixBuilder extends MatrixBuilder {
         CSRMatrix matrix = new CSRMatrix(rowPointers.toArray(true), columnIndices.toArray(true),
             values.toArray(true), maxNumColumns);
         return matrix;
+    }
+
+    private static final class ColValue implements Comparable<ColValue> {
+        final int col;
+        final double value;
+
+        ColValue(int col, double value) {
+            this.col = col;
+            this.value = value;
+        }
+
+        @Override
+        public int compareTo(ColValue o) {
+            return Integer.compare(col, o.col);
+        }
+
     }
 
 }
