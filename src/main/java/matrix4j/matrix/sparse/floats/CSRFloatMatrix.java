@@ -62,6 +62,21 @@ public final class CSRFloatMatrix extends RowMajorFloatMatrix {
         this.nnz = values.length;
     }
 
+    @Nonnull
+    public int[] getRowPointers() {
+        return rowPointers;
+    }
+
+    @Nonnull
+    public int[] getColumnIndices() {
+        return columnIndices;
+    }
+
+    @Nonnull
+    public float[] getValues() {
+        return values;
+    }
+
     @Override
     public boolean isSparse() {
         return true;

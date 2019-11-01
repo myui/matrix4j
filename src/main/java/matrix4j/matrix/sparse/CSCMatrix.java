@@ -60,6 +60,21 @@ public final class CSCMatrix extends ColumnMajorMatrix {
         this.nnz = values.length;
     }
 
+    @Nonnull
+    public int[] getColumnPointers() {
+        return columnPointers;
+    }
+
+    @Nonnull
+    public int[] getRowIndices() {
+        return rowIndices;
+    }
+
+    @Nonnull
+    public double[] getValues() {
+        return values;
+    }
+
     @Override
     public boolean isSparse() {
         return true;
