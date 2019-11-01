@@ -124,6 +124,14 @@ public final class IntArrayList implements Serializable {
         return data[index];
     }
 
+    public int getLast() {
+        final int lastIndex = used - 1;
+        if (lastIndex < 0) {
+            throw new NoSuchElementException("No element in the list");
+        }
+        return data[lastIndex];
+    }
+
     /**
      * @return -1 if not found.
      */

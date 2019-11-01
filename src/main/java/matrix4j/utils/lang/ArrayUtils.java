@@ -18,6 +18,7 @@ package matrix4j.utils.lang;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
@@ -137,6 +138,49 @@ public final class ArrayUtils {
     public static List<Double> toList(@Nonnull final double[] array) {
         Double[] v = toObject(array);
         return Arrays.asList(v);
+    }
+
+    @Nonnull
+    public static <T> T[] shuffle(@Nonnull final T[] array) {
+        shuffle(array, array.length);
+        return array;
+    }
+
+    @Nonnull
+    public static <T> T[] shuffle(@Nonnull final T[] array, final Random rnd) {
+        shuffle(array, array.length, rnd);
+        return array;
+    }
+
+    @Nonnull
+    public static <T> T[] shuffle(@Nonnull final T[] array, final int size) {
+        Random rnd = new Random();
+        shuffle(array, size, rnd);
+        return array;
+    }
+
+    /**
+     * Fisher–Yates shuffle
+     *
+     * @link http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+     */
+    @Nonnull
+    public static <T> T[] shuffle(@Nonnull final T[] array, final int size,
+            @Nonnull final Random rnd) {
+        for (int i = size; i > 1; i--) {
+            int randomPosition = rnd.nextInt(i);
+            swap(array, i - 1, randomPosition);
+        }
+        return array;
+    }
+
+    @Nonnull
+    public static int[] shuffle(@Nonnull final int[] array, @Nonnull final Random rnd) {
+        for (int i = array.length; i > 1; i--) {
+            int randomPosition = rnd.nextInt(i);
+            swap(array, i - 1, randomPosition);
+        }
+        return array;
     }
 
     public static void swap(@Nonnull final Object[] arr, final int i, final int j) {
