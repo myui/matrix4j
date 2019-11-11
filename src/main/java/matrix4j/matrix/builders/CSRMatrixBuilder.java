@@ -62,9 +62,6 @@ public final class CSRMatrixBuilder extends MatrixBuilder {
 
     @Override
     public CSRMatrixBuilder nextRow() {
-        int ptr = values.size();
-        rowPointers.add(ptr);
-
         if (sortRequired) {
             Collections.sort(colCache);
         }
@@ -73,6 +70,9 @@ public final class CSRMatrixBuilder extends MatrixBuilder {
             values.add(e.value);
         }
         colCache.clear();
+
+        int ptr = values.size();
+        rowPointers.add(ptr);
         return this;
     }
 
@@ -108,6 +108,11 @@ public final class CSRMatrixBuilder extends MatrixBuilder {
         @Override
         public int compareTo(ColValue o) {
             return Integer.compare(col, o.col);
+        }
+
+        @Override
+        public String toString() {
+            return "[column=" + col + ", value=" + value + ']';
         }
 
     }
