@@ -13,7 +13,7 @@ You can use Matrix4j through Maven central repository by adding the following en
     <dependency>
       <groupId>io.github.myui</groupId>
       <artifactId>matrix4j</artifactId>
-      <version>0.9.0</version>
+      <version>0.9.2</version>
     </dependency>
  ```
 
