@@ -17,6 +17,8 @@ You can use Matrix4j through Maven central repository by adding the following en
     </dependency>
  ```
 
+Find usage in [unit tests](https://github.com/myui/matrix4j/blob/master/src/test/java/matrix4j/matrix/MatrixBuilderTest.java).
+
 # Requirements
 
 Java7 or later is supported.
