@@ -370,7 +370,7 @@
 								<requireJavaVersion>
 									<version>[1.8,)</version>
 									<message>
-										Hivemall requires JDK version 1.8 or higher.
+										This project requires JDK version 1.8 or higher.
 									</message>
 								</requireJavaVersion>
 							</rules>
