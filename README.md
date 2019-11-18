@@ -1,6 +1,6 @@
 # Matrix4j
 [![Build Status](https://travis-ci.org/myui/matrix4j.svg?branch=master)](https://travis-ci.org/myui/matrix4j)
-[![License](http://img.shields.io/:license-Apache_v2-blue.svg)](https://github.com/myui/btree4j/blob/master/LICENSE)
+[![License](http://img.shields.io/:license-Apache_v2-blue.svg)](https://github.com/myui/matrix4j/blob/master/LICENSE)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.myui/matrix4j/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.myui/matrix4j)
 
 The matrix and vector library for Java
